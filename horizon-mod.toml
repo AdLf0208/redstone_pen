@@ -1,0 +1,35 @@
+# Redstone Pen for Horizon — one flat SDK package: the carried content and the port's code.
+#
+# Migrated 2026-11-18 from the retired `.hnmod` container (Horizon's mod-API merge #16941,
+# launcher >= 0.2.70; the registry closed submission #882 with the format purge). The manifest
+# below is the only one: identity, the content capability and the exact native pins. `assets/`
+# and `data/` are the carried content (the pen, the track, the four relays, their models, loot,
+# recipes, tag, creative tab and lang), `src/` is the port's code; both halves travel in one
+# file, which is the point of the SDK layout.
+#
+# Licence: MIT, read from the jar (`META-INF/neoforge.mods.toml`, licence-cache/
+# redstonepen-1.21-neoforge-1.11.42.jar), rank 0. `LICENSE` and `LICENSE-NOTICE.md` travel
+# inside the package. Local-only until the maintainer approves publishing (ARCHITECTURE.md §8).
+id = "redstonepen"
+name = "Redstone Pen"
+version = "0.2.0"
+description = """A port of Redstone Pen for Horizon: the pen that draws thin redstone tracks on block
+faces, one track per block with two or three arms (a straight track, a corner or a T) and one power,
+plus the plain, inverted, pulse and bistable relays. Upstream's 24 wire segments in one block entity
+are reduced to the two-or-three-arm net a block state can hold; the pen draws, extends, bends, widens
+and sneak-erases, a track costs one per step, a wire costs one, any other source seeds its full
+strength and a relay re-emits 15 on one output face. The bridge relay, the control box, the gauge and
+the custom renderers are not ported."""
+authors = ["Stefan Wilhelm (wile)", "AdLf0208"]
+# The content API: exact and checked. This package ships carried content beside its code, so the
+# capability is a real claim; it is also the one value the manifest schema has.
+api = "0.2"
+# The installation side, not the hook's: an integrated server belongs to the client
+# installation, so a LAN host or a single-player world needs both.
+side = "both"
+capabilities = ["registries"]
+
+[native]
+game = "26.3"
+horizon = "0b14f8acfd97fa2c750e42795249dcc981178ca4"
+mixins = "e59da9094f0c2fdda6c627fe9eff22dec6a906f0"

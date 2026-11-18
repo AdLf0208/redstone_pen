@@ -1,0 +1,22 @@
+[package]
+# Port of Redstone Pen 1.11.42 (stfwi/redstonepen, MIT). Minecraft Java 1.21.1 NeoForge;
+# the port targets Horizon 26.3 at the pin in horizon-mod.toml. Clean-room Rust rewrite from
+# the mod's behaviour (notes.md and the upstream analysis it records).
+#
+# Cargo's name and version are not the mod's identity: horizon-mod.toml is.
+name = "redstonepen"
+version = "0.2.0"
+edition = "2024"
+license = "MIT"
+description = "Redstone Pen for Horizon: the pen, the two-or-three-arm track and the four relays"
+publish = false
+
+[lib]
+# The pure rules are `src/runtime.rs`; the crate root is `src/lib.rs`.
+path = "src/lib.rs"
+
+[dependencies]
+# The pinned SDK's API crate, fetched into .horizon/sdk/ by any `cargo horizon-mod` command
+# (the launcher builds against its own copy of the same build). This port adds no registry
+# dependency of its own.
+horizon-mod-api = { path = ".horizon/sdk/api/crates/horizon-mod-api" }
